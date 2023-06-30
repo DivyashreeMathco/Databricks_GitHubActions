@@ -1,0 +1,24 @@
+name: Create DataBricks Workspace
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the 'main' branch
+
+jobs:
+  create_workspace:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        id: checkout_repository
+        uses: actions/checkout@v2
+
+      - name: Set up Azure CLI
+        uses: azure/setup-azure-cli@v1
+
+      - name: Create DataBricks workspace
+        run: |
+          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+          az databricks workspace create --resource-group mlopsgithub --name databrciks_workspace --location centralindia
+          # Additional steps for workspace configuration can be added here
