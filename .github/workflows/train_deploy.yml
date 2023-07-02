@@ -13,26 +13,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         
+      - name: Create Azure Databricks cluster
+        id: create_cluster
+        run: |
+          cluster_name="my-cluster"
+          cluster_config='{"spark_version": "12.2.x-scala2.12", "node_type_id": "Standard_DS3_v2", "num_workers": 1}'
+          az databricks clusters create --resource-group rg-test-clarins --workspace-name databricks_workspace --name $cluster_name --json "$cluster_config"
+        
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
           databricks-host: https://adb-7150091277937564.4.azuredatabricks.net/
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           local-notebook-path: src/Libraries.py
-          # The cluster JSON below is for AWS workspaces. On Azure and GCP, set
-          # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
-          # Azure or "n1-highmem-4" for GCP
-          new-cluster-json: >
-                {
-                  "cluster_name": "single-node-cluster",
-                  "node_type_id": "i3.xlarge",
-                  "spark_version": "7.6.x-scala2.12",
-                  "num_workers": 1,
-                - "custom_tags": {
-                     "ResourceClass": "SingleNode"
-                  },
-                - "spark_conf": {
-                      "spark.databricks.cluster.profile": "singleNode",
-                      "spark.master": "[*, 4]"
-                  }
-                }
