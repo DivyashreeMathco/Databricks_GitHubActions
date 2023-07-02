@@ -23,8 +23,16 @@ jobs:
           # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
           # Azure or "n1-highmem-4" for GCP
           new-cluster-json: >
-            {
-               "num_workers": 1,
-               "spark_version": "11.3.x-scala2.12",
-               "node_type_id": "Standard_D3_v2"
-            }
+                {
+                  "cluster_name": "single-node-cluster",
+                  "node_type_id": "i3.xlarge",
+                  "spark_version": "7.6.x-scala2.12",
+                  "num_workers": 1,
+                - "custom_tags": {
+                     "ResourceClass": "SingleNode"
+                  },
+                - "spark_conf": {
+                      "spark.databricks.cluster.profile": "singleNode",
+                      "spark.master": "[*, 4]"
+                  }
+                }
