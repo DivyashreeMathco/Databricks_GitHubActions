@@ -18,11 +18,15 @@ jobs:
         
       - name: Install Azure CLI Databricks extension
         run: az extension add --name databricks
+        
+      - name: Azure CLI Login
+        id: azure_login
+        run: |
+          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
 
       - name: Check if Azure Databricks workspace exists
         id: check_workspace
         run: |
-          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
           workspace=$(az databricks workspace show --resource-group rg-test-clarins --name databricks_workspace --query 'workspaceUrl' -o tsv)
           if [ -n "$workspace" ]; then
             echo "Workspace already exists"
