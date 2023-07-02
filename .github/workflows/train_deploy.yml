@@ -16,9 +16,9 @@ jobs:
       - name: Create Azure Databricks cluster
         id: create_cluster
         run: |
-          cluster_name="my-cluster"
-          cluster_config='{"spark_version": "12.2.x-scala2.12", "node_type_id": "Standard_DS3_v2", "num_workers": 1}'
-          az databricks clusters create --resource-group rg-test-clarins --workspace-name databricks_workspace --name $cluster_name --json "$cluster_config"
+          compute_name="mycompute"
+          compute_config='{"spark_version": "3.3.2-scala2.12", "node_type_id": "Standard_DS3_v2", "num_workers": 1}'
+          az databricks compute create --resource-group rg-test-clarins --workspace-name databricks_workspace --name $compute_name --json "$compute_config"
         
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
