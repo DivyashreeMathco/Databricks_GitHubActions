@@ -21,16 +21,15 @@ jobs:
         run: |
           az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
         
-      - name: Create Azure Databricks cluster
-        id: create_cluster
-        run: |
-          compute_name="mycompute"
-          compute_config='{"spark_version": "3.3.2-scala2.12", "node_type_id": "Standard_DS3_v2", "num_workers": 1}'
-          az databricks compute create --resource-group rg-test-clarins --workspace-name databricks_workspace --name $compute_name --json "$compute_config"
-        
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
-          databricks-host: https://adb-7150091277937564.4.azuredatabricks.net/
+          databricks-host: https://adb-7150091277937564.4.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           local-notebook-path: src/Libraries.py
+          new-cluster-json: >
+           {
+             "num_workers": 1,
+             "spark_version": "10.4.x-scala2.12",
+             "node_type_id": "Standard_D3_v2"
+           }
