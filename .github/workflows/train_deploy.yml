@@ -13,23 +13,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         
-      - name: Install Azure CLI Databricks extension
-        run: az extension add --name databricks
-        
-      - name: Azure CLI Login
-        id: azure_login
-        run: |
-          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
-        
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
-          databricks-host: https://adb-7150091277937564.4.azuredatabricks.net
+          databricks-host: https://adb-7150091277937564.4.azuredatabricks.net/
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-          local-notebook-path: src/Libraries.py
+          local-notebook-path: src/Data_preparation/snowflake_connectivity.py
           new-cluster-json: >
            {
              "num_workers": 1,
              "spark_version": "10.4.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
+             "node_type_id": "Standard_DS3_v2"
            }
