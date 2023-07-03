@@ -13,12 +13,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         
+      - name: Install Azure CLI Databricks extension
+        run: az extension add --name databricks
+        
+      - name: Azure CLI Login
+        id: azure_login
+        run: |
+          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+        
       - name: Create Azure Databricks cluster
         id: create_cluster
         run: |
           compute_name="mycompute"
           compute_config='{"spark_version": "3.3.2-scala2.12", "node_type_id": "Standard_DS3_v2", "num_workers": 1}'
-          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
           az databricks cluster create --resource-group rg-test-clarins --workspace-name databricks_workspace --name $compute_name --json "$compute_config"
         
       - name: Trigger notebook in workspace
