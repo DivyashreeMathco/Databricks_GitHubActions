@@ -1,6 +1,7 @@
 name: Run the notebooks on data bricks workspace
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
