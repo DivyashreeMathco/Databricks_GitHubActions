@@ -22,6 +22,6 @@ jobs:
           new-cluster-json: >
            {
              "num_workers": 1,
-             "spark_version": "10.4.x-scala2.12",
+             "spark_version": "12.2.x-scala2.12",
              "node_type_id": "Standard_DS3_v2"
            }
