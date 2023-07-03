@@ -20,10 +20,4 @@ jobs:
           local-notebook-path: src/Data_preparation/snowflake_connectivity.py
           databricks-host: https://adb-7150091277937564.4.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-          git-commit: ${{ github.event.push.head.sha }}
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "12.2.x-scala2.12",
-             "node_type_id": "Standard_DS3_v2"
-           }
+          existing-cluster-id: 0703-075025-4qvvdoqv
