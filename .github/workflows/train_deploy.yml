@@ -14,6 +14,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         
+      - name: Set up Azure CLI
+        uses: pietrobolcato/install-azure-cli-action@v1.0.1
+        
+      - name: Install Azure CLI Databricks extension
+        run: az extension add --name databricks
+        
+      - name: Azure CLI Login
+        id: azure_login
+        run: |
+          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+        
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -21,4 +32,4 @@ jobs:
           databricks-host: https://adb-7150091277937564.4.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          existing-cluster-id: '0703-075025-4qvvdoqv'
+          existing-cluster-id: 0703-075025-4qvvdoqv
