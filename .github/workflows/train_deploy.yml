@@ -20,4 +20,4 @@ jobs:
           local-notebook-path: src/Data_preparation/snowflake_connectivity.py
           databricks-host: https://adb-7150091277937564.4.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-          existing-cluster-id: 0703-075025-4qvvdoqv
+          existing-cluster-id: '0703-075025-4qvvdoqv'
