@@ -7,10 +7,10 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  run-databricks-notebook:
+   runs-on: ubuntu-latest
 
-    steps:
+   steps:
       - name: Checkout repo
         uses: actions/checkout@v2
         
