@@ -25,6 +25,11 @@ jobs:
       - name: Install Azure CLI Databricks extension
         run: az extension add --name databricks
         
+      - name: set up python
+        uses: actions/setup-python@v3.1.4
+        with:
+          python-version: 3.9
+          
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
