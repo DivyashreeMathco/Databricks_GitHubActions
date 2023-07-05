@@ -3,6 +3,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run ../../src/Libraries
+
+# COMMAND ----------
+
 data
 
 # COMMAND ----------
