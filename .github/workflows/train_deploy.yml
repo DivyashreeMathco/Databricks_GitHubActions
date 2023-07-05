@@ -13,18 +13,7 @@ jobs:
    steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        
-      - name: Set up Azure CLI
-        uses: pietrobolcato/install-azure-cli-action@v1.0.1
-        
-      - name: Azure CLI Login
-        id: azure_login
-        run: |
-          az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
-        
-      - name: Install Azure CLI Databricks extension
-        run: az extension add --name databricks
-          
+      
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -36,6 +25,6 @@ jobs:
           new-cluster-json: >
            {
              "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_DS3_v2"
+             "spark_version": "10.4.x-scala2.12",
+             "node_type_id": "Standard_D3_v2"
            }
