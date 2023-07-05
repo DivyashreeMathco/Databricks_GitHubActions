@@ -8,7 +8,7 @@
 # COMMAND ----------
 
 import os
-os.environ["DATABRICKS_TOKEN"] = "dapidf17aacba236669e3c3bb739bf3f917f"
+os.environ["DATABRICKS_TOKEN"] = "dapia5e7f1b40e44547d53dc6adc323be440"
 
 # COMMAND ----------
 
