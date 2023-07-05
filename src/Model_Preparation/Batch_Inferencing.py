@@ -15,7 +15,7 @@ display(spark_df)
 
 # COMMAND ----------
 
-table_path = "dbfs:/divyashree.mudiganti@themathcompany.com/delta/wine_data"
+table_path = "dbfs:/mudugantidivyadinesh@gmail.com/delta/wine_data"
 
 # COMMAND ----------
 
