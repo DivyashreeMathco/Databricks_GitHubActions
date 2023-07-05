@@ -13,17 +13,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+        
       - name: Set up Azure CLI
         uses: pietrobolcato/install-azure-cli-action@v1.0.1
         
-      - name: Install Azure CLI Databricks extension
-        run: az extension add --name databricks
         
       - name: Azure CLI Login
         id: azure_login
         run: |
           az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+
+     
+      - name: Install Azure CLI Databricks extension
+        run: az extension add --name databricks
+        
       
       - name: Check if Azure Databricks workspace exists
         id: check_workspace
