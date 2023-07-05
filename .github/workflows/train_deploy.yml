@@ -17,7 +17,7 @@ jobs:
       - name: Trigger notebook in workspace
         uses: databricks/run-notebook@v0
         with:
-          local-notebook-path: src/Data_preparation/snowflake_connectivity.py
+          local-notebook-path: src/Libraries.py
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
@@ -25,6 +25,6 @@ jobs:
           new-cluster-json: >
            {
              "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
+             "spark_version": "10.4.x-scala2.12",
              "node_type_id": "Standard_D3_v2"
            }
