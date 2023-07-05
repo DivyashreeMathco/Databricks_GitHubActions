@@ -31,7 +31,7 @@ jobs:
       - name: Check if Azure Databricks workspace exists
         id: check_workspace
         run: |
-          if [ -n "$az databricks workspace show --resource-group MLOPS --name prod_workspace --query 'workspaceUrl' -o tsv" ]; then
+          if [ -n "$az databricks workspace show --resource-group MLOPS --name myworkspace --query 'workspaceUrl' -o tsv" ]; then
             echo "Workspace already exists"
             echo "::set-output name=workspace-exists::true"
           else
@@ -42,4 +42,4 @@ jobs:
       - name: Create Azure Databricks workspace
         if: steps.check_workspace.outputs.workspace-exists == 'false'
         run: |
-          az databricks workspace create --resource-group MLOPS --name prod_workspace --location centralindia
+          az databricks workspace create --resource-group MLOPS --name myworkspace --location centralindia
