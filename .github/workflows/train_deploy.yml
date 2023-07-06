@@ -1,4 +1,4 @@
-name: Run the notebooks on data bricks workspace
+name: Run notebooks on data bricks workspace
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Libraries.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -33,7 +33,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Data_preparation/snowflake_connectivity.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -47,7 +47,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Data_preparation/EDA.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -62,7 +62,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Model_Preparation/Model_Training.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -77,7 +77,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Model_Preparation/Model_Registering.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -92,7 +92,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Model_Preparation/Batch_Inferencing.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
@@ -106,7 +106,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: src/Model_Preparation/Model_Serving.py
-          databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
+          databricks-host: https://adb-7630345747923601.1.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           #existing-cluster-id: 0704-124839-3hgqqh0e
