@@ -34,5 +34,5 @@ jobs:
             echo "Workspace already exists"
           else
             echo "Creating the workspace"
-            az databricks workspace create --resource-group MLOPS --name my_workspace --location eastus
+            az databricks workspace create --resource-group MLOPS --name deploy_workspace --location eastus
           fi
