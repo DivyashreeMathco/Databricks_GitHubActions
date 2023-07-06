@@ -1,9 +1,9 @@
 # Databricks notebook source
-# MAGIC %run ../../src/Data_preparation/EDA
+# COMMAND ----------
+# MAGIC %run ../../src/Libraries
 
 # COMMAND ----------
-
-# MAGIC %run ../../src/Libraries
+# MAGIC %run ../../src/Data_preparation/EDA
 
 # COMMAND ----------
 
