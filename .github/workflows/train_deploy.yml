@@ -21,14 +21,8 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
-           
+          existing-cluster-id: 0706-111411-bmi9yydy
+          
       - name: Trigger 2nd notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -36,13 +30,8 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
+          existing-cluster-id: 0706-111411-bmi9yydy
+          
       - name: Trigger 3rd notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -50,13 +39,7 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
+          existing-cluster-id: 0706-111411-bmi9yydy
            
       - name: Trigger 4th notebook in workspace
         uses: databricks/run-notebook@v0
@@ -65,13 +48,8 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
+          existing-cluster-id: 0706-111411-bmi9yydy
+      
            
       - name: Trigger 5th notebook in workspace
         uses: databricks/run-notebook@v0
@@ -80,14 +58,8 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
-           
+          existing-cluster-id: 0706-111411-bmi9yydy
+         
       - name: Trigger 6th notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -95,13 +67,8 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
+          existing-cluster-id: 0706-111411-bmi9yydy
+         
       - name: Trigger 7th notebook in workspace
         uses: databricks/run-notebook@v0
         with:
@@ -109,11 +76,4 @@ jobs:
           databricks-host: https://adb-8209232505015077.17.azuredatabricks.net
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
-          #existing-cluster-id: 0704-124839-3hgqqh0e
-          new-cluster-json: >
-           {
-             "num_workers": 1,
-             "spark_version": "11.3.x-scala2.12",
-             "node_type_id": "Standard_D3_v2"
-           }
-
+          existing-cluster-id: 0706-111411-bmi9yydy
