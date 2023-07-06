@@ -28,12 +28,12 @@ jobs:
         run: az extension add --name databricks
         
       
-      - name: Check if Azure Databricks workspace exists
-        id: check_workspace
+      - name: Check if Azure Databricks workspace exists and create
         run: |
-          if [ az databricks workspace show --resource-group MLOPS --name my_workspace --query 'workspaceUrl' -o tsv ]; then
+          if az databricks workspace show --resource-group MLOPS --name my_workspace --query 'workspaceUrl' -o tsv; then
             echo "Workspace already exists"
           else
             echo "Creating the workspace"
             az databricks workspace create --resource-group MLOPS --name my_workspace --location centralindia
           fi
+          
