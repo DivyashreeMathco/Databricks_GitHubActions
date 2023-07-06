@@ -30,9 +30,9 @@ jobs:
       
       - name: Check if Azure Databricks workspace exists and create
         run: |
-          if az databricks workspace show --resource-group MLOPSGITHUBACTIONS --name github_workspace --query 'workspaceUrl' -o tsv; then
+          if az databricks workspace show --resource-group MLOPS --name prod_workspace --query 'workspaceUrl' -o tsv; then
             echo "Workspace already exists"
           else
             echo "Creating the workspace"
-            az databricks workspace create --resource-group MLOPSGITHUBACTIONS --name github_workspace --location eastus
+            az databricks workspace create --resource-group MLOPS --name prod_workspace --location centralindia
           fi
