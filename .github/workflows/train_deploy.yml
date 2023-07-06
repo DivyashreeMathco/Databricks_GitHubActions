@@ -22,7 +22,7 @@ jobs:
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           git-commit: ${{ github.event.push.head.sha }}
           existing-cluster-id: 0706-111411-bmi9yydy
-          
+        
       - name: Trigger 2nd notebook in workspace
         uses: databricks/run-notebook@v0
         with:
