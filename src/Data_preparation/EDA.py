@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %run ../../src/Data_preparation/snowflake_connectivity
+# MAGIC %run ../../src/Data_preparation/snowflake_connectivity.py
 
 # COMMAND ----------
 
@@ -112,14 +112,6 @@ type(data)
 # COMMAND ----------
 
 new_data = spark.createDataFrame(data)
-
-# COMMAND ----------
-
-'''new_data.write.format("snowflake") \
-    .options(**options) \
-    .option("dbtable", 'table01') \
-    .mode("append") \
-    .save()'''
 
 # COMMAND ----------
 
